@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Szablon Allegro</title>
+        <link rel="stylesheet" type="text/css" href="szablon.css">
+    </head>
+    <body>
+
+        <div id="editPanel">
+            <div id="btn">
+                E D Y T U J
+            </div>
+
+            <div>
+                <label for="titleEdit">Tytuł:</label><input type="text" id="titleEdit">
+                <label for="telephoneEdit">Telefon:</label><input type="tel" id="telephoneEdit">
+                <label for="emailEdit">Email:</label><input type="email" id="emailEdit">
+                <label>Specyfikacja:</label>
+
+                <ul id="specyficationConteiner" style="list-style-type: none; margin: 0; padding: 0;">
+                    <li class="divSpecyficationInput">
+                        <input type="text" class="specyficationEdit" name="specyfication">
+                        <input type="submit" class="removeSpecyficationBTN" value="-">
+                    </li>
+                    <li class="divSpecyficationInput">
+                        <input type="text" class="specyficationEdit" name="specyfication">
+                        <input type="submit" class="removeSpecyficationBTN" value="-">
+                    </li>
+                    <li class="divSpecyficationInput">
+                        <input type="text" class="specyficationEdit" name="specyfication">
+                        <input type="submit" class="removeSpecyficationBTN" value="-">
+                    </li>
+                </ul>
+                <input type="submit" class="addNewSpecyficationBTN" value="+">
+
+
+            </div>
+
+            <input type="submit" id="generateBTN" value="Generuj kod">
+        </div>
+
+        <div id="template" style="display: none;">
+            <h3>Skopiuj zawartość i wklej do edytora Allegro</h3>
+            <textarea></textarea>
+            <img src="img/close.png" height="30" width="30" alt="ZAMKNIJ">
+        </div>
+
+        <div id="contentBox">
+
+            <style><!--
+                body
+                {
+                    margin: 0;
+                }
+                #content
+                {
+                    margin: 0 auto;
+                    width: 1000px;
+                    color: #3A3A3A;
+                }
+
+                #firstHr
+                {
+                    text-align: right;
+                }
+
+                #firstHr span
+                {
+                    margin-right: 20px;
+                }
+
+                hr
+                {
+                    margin-bottom: 70px;
+                }
+
+                .hr
+                {
+                    margin-top: 70px;
+                }
+
+                .hr>span
+                {
+                    font-size: 30px;
+                }
+
+                .hr>img
+                {
+                    margin-bottom: -5px;
+                }
+
+                #banner
+                {
+                    height: 50px;
+                    background-image: linear-gradient(#f8f7f3, white);
+                }
+
+                #logo>img
+                {
+                    height: 120px;
+                    width: 120px;
+                    margin-left: 40px;
+                    margin-top: 20px;
+                }
+
+                #menu > ul
+                {
+                    list-style-type: none;
+                    display: flex;
+                    justify-content: flex-end;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                #menu>ul>li>a
+                {
+                    text-decoration: none;
+                    color: #8d8d8d;
+                    padding: 20px;
+                }
+
+                #menu>ul>li>a:hover
+                {
+                    padding: 20px;
+                    transition: 0.3s;
+                    color: #3485ab;
+                    cursor: pointer;
+                }
+
+                h1
+                {
+                    text-align: center;
+                    width: 500px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    padding: 30px 0;
+                    color: #8d8d8d;
+                }
+
+                p
+                {
+                    font-size: 20px;
+                    margin: 0;
+                }
+
+                .desc
+                {
+                    height: 500px;
+                    margin: 0;
+                }
+
+                #specyfication ul
+                {
+                    list-style-type: none;
+                    font-size: 30px;
+                    font-weight: bold; 
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+
+                #specyfication li
+                {
+                    padding: 5px;
+                }
+
+                #specyfication li:after
+                {
+                    content: " →";
+                }
+
+                #specyfication
+                {
+                    display: table;
+                    float: left;
+                    width: 400px;
+                    height: 440px;
+                    padding: 10px;
+                }
+
+                .photoSpecyfication1
+                {
+                    float: right;
+                    padding: 30px;
+                }
+
+                .photoSpecyfication2
+                {
+                    float: left;
+                    padding: 30px;
+                }
+
+                #details_desc
+                {
+                    float: right;
+                    padding: 10px;
+                    width: 400px;
+                    height: 440px;
+                    display: table;
+                }
+
+                #details_desc p
+                {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+
+                #gallery>ul
+                {
+                    list-style-type: none;
+                    text-align: center;
+                }
+
+                .photo>img
+                {
+                    height: 600px;
+                    width: 800px;
+                    margin: 10px;
+                    border-radius: 10px;
+                }
+
+                .supplyElement
+                {
+                    background-color: lightgrey;
+                    border-radius: 50%;
+                    height: 200px;
+                    width: 200px;
+                    float: left;
+                    text-align: center;
+                    padding: 50px;
+                    margin: 15px;
+                    font-weight: bold;
+                    line-height: 30px;
+                }
+
+                .supplyElement>img
+                {
+                    height: 150px; 
+                    width: 150px;
+                }
+
+                .contact
+                {
+                    background-color: lightgrey;
+                    border-radius: 10px;
+                    height: 300px;
+                    width: 400px;
+                    float: left;
+                    text-align: center;
+                    padding: 40px;
+                    margin: 10px;
+                }
+
+                .contact:hover
+                {
+                    background-image: linear-gradient(white, grey);
+                    color: red;
+                    letter-spacing: 1px;
+                }
+
+                .contact:hover h2
+                {
+                    color: red;
+                }
+
+                h2
+                {
+                    font-size: 30px;
+                    margin-top: 0;
+                    margin-bottom: 25px;
+                }
+
+                #contact p
+                {
+                    text-align: center;
+                    padding: 20px;
+                }
+
+                #goTop
+                {
+                    position: absolute;
+                    bottom: 20px;
+                    right: 20px;
+                }
+                --></style>
+            <div id="banner">
+                <div id="logo">
+                    <img src="http://www.fancyicons.com/download/?id=2955&t=png&s=256">
+                </div>
+            </div>
+            <div id="content">
+
+
+                <div id="menu">
+                    <ul>
+                        <li> <a href="#title">Opis</a></li>
+                        <li><a href="#gallery">Galeria</a></li>
+                        <li><a href="#supply">Dostawa</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div id="firstHr" class="hr">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR71HvP7w0vemWIvMRfplKzfJVZYpH7HNHPCbq9IGn3eUu5DOM67w" alt="telefon: " height="30" width="30"><span> 555-555-555</span>
+                </div>
+                <hr>
+
+                <div id="title">
+                    <h1>NAZWA PRZEDMIOTU</h1>
+                </div>
+
+                <div id="description">
+
+                    <div class="desc">
+                        <div id="specyfication">
+                            <ul id="specyficationUl">
+                                <li> Specyfikacja </li>
+                                <li> Specyfikacja </li>
+                                <li> Specyfikacja </li>
+                            </ul>
+                        </div>
+
+                        <div class="photoSpecyfication1">
+                            <img src="http://pngimg.com/upload/smartphone_PNG8519.png" height="400" width="400">
+                        </div>
+
+                    </div>
+
+                    <div style="clear: both;"></div>
+
+                    <div class="desc">
+                        <div class="photoSpecyfication2">
+                            <img src="http://conocea.com/blog/wp-content/uploads/2015/05/smartphone-android-titan-b-7100-wifi-doble-chip-3g-53_MLM-F-3995481449_032013.jpg" height="400" width="400">
+                        </div>
+
+                        <div id="details_desc">
+                            <p>
+                                Pellentesque nec sem nisi. Vivamus vestibulum, arcu imperdiet auctor elementum, augue ante lacinia nibh, quis pulvinar nisi arcu a ante. Donec ornare viverra ornare. Cras vestibulum velit eu lacinia bibendum. Nunc commodo luctus tellus at efficitur. Curabitur vitae tortor facilisis, vehicula risus ac, lobortis lacus. Sed pellentesque tincidunt felis, porttitor ullamcorper nisl semper at. Nulla molestie quis risus a bibendum. Pellentesque nec sem nisi. Vivamus vestibulum, arcu imperdiet auctor elementum, augue ante lacinia nibh, quis pulvinar nisi arcu a ante. Donec ornare viverra ornare. 
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="clear: both;">
+                    <p style="padding-top:100px;">
+                        Cras vestibulum velit eu lacinia bibendum. Nunc commodo luctus tellus at efficitur. Curabitur vitae tortor facilisis, vehicula risus ac, lobortis lacus. Sed pellentesque tincidunt felis, porttitor ullamcorper nisl semper at. Nulla molestie quis risus a bibendum. Pellentesque nec sem nisi. Vivamus vestibulum, arcu imperdiet auctor elementum, augue ante lacinia nibh, quis pulvinar nisi arcu a ante. Donec ornare viverra ornare. 
+                    </p>
+                </div>
+
+                <div id="gallery">
+                    <div class="hr">
+                        <img src="https://s-media-cache-ak0.pinimg.com/originals/71/c5/01/71c501c02d81d031585ed7044d0a29c8.png" alt="telefon: " height="30" width="30"><span> Galeria</span>
+                    </div>
+                    <hr>
+                    <ul>
+                        <li class="photo"><img src="http://img1.cokupicstatic.pl/asset_44db56570907ada9d5d7dc4d8f195351"></li>
+                        <li class="photo"><img src="http://www.mycenter.pl/kupic_img9/20/huawei_smartfon-huawei-ascend-y3--y360--bialy_3286322729.jpg"></li>
+                        <li class="photo"><img src="https://www.tracer.pl/gfx-base/files/TRA/FON/43868/hire_43868.jpg"></li>
+                    </ul>
+                </div>
+
+                <div id="supply">
+                    <div class="hr">
+                        <img src="http://trackimo.com/wp-content/uploads/2016/05/TRACKIMO-drone-icons-FAST-DELIVERY-2.png" alt="telefon: " height="30" width="30"><span> Dostawa</span>
+                    </div>
+                    <hr>
+
+                    <div class="supplyElement">
+                        Odbiór osobisty:
+                        <img src="http://vignette4.wikia.nocookie.net/okami/images/f/f0/Check_mark.png/revision/latest?cb=20130520141819">
+                    </div>
+
+                    <div class="supplyElement">
+                        Wysyłka w ciągu:
+                        <img src="http://chwilowkiwnocy.pl/images/24h.png">
+                    </div>
+
+                    <div class="supplyElement">
+                        Wysyłka pobraniowa:
+                        <img src="http://vignette4.wikia.nocookie.net/okami/images/f/f0/Check_mark.png/revision/latest?cb=20130520141819">
+                    </div>
+
+                    <div style="clear: both;"></div>
+
+                </div>
+
+                <div id="contactBox">
+                    <div class="hr">
+                        <img src="http://partnerzybiznesu.pl/images/elementy_strony/contact03.png" alt="telefon: " height="30" width="30"><span> Kontakt</span>
+                    </div>
+                    <hr>
+
+                    <div id="contact2" class="contact">
+                        <h2>555-555-555</h2>
+                        <img src="http://www.pngall.com/wp-content/uploads/2016/05/Phone-PNG-Pic.png" height="200" width="200">
+                    </div>
+
+                    <div id="email" class="contact">
+                        <h2>zaqwsdsadsasx@gmail.com</h2>
+                        <img src="http://vignette3.wikia.nocookie.net/fallout/images/6/6e/Logo_email.png/revision/latest?cb=20130114154752&path-prefix=pl" height="200" width="200">
+                    </div>
+
+                    <div id="contact" style="clear: both;">
+                        <p>
+                            Zapraszam do kontaktu, chętnie udzielę dodatkowych informacji oraz rozwieję wszelkie wątpliwości :)
+                        </p>
+                    </div>
+
+                    <div id="goTop">
+                        <a href="#">
+                            <img src="http://www.schoenhouse.de/fileadmin/template/img/go_top.png" height="50" width="50" title="Przewiń do początku strony">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="java.js"></script>
+    </body>
+</html>
