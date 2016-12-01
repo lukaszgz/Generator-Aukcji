@@ -40,12 +40,20 @@
     padding: 20px;
     font-size: 20px;
     z-index: 99;
+    overflow: auto;
 }
 
 input
 {
     font-size: 20px;
     width: 245px;
+}
+
+#descriptionEdit, #descriptionPlusEdit, #footerEdit
+{
+    font-size: 20px;
+    width: 245px;
+    transition: all linear 1s;
 }
 
 #template
@@ -66,7 +74,7 @@ input
     cursor: pointer;
 }
 
-textarea
+#textarea
 {
     width: 60%;
     height: 80%;

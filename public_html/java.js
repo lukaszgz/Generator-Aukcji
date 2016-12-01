@@ -1,4 +1,4 @@
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
 
 //Wysówane boczne menu edycji szablonu
     var btn = document.getElementById("btn");
@@ -27,12 +27,13 @@ window.addEventListener('load', function(){
         var t = document.querySelector("h1");
         inputTitle.style.background = "";
         t.style.background = "yellow";
+        t.scrollIntoView();
     }, false);
 
     inputTitle.addEventListener('blur', function () {
         var t = document.querySelector("h1");
         t.style.background = "";
-        t.textContent = inputTitle.value;
+
 
         if (inputTitle.value == "")
         {
@@ -40,6 +41,7 @@ window.addEventListener('load', function(){
             inputTitle.placeholder = "Uzupełnij Tytuł...";
         } else
         {
+            t.textContent = inputTitle.value;
             inputTitle.style.background = "";
         }
     }, false);
@@ -51,13 +53,13 @@ window.addEventListener('load', function(){
         var t = document.querySelector("#firstHr span");
         inputTelephone.style.background = "";
         t.style.background = "yellow";
+        t.scrollIntoView();
     }, false);
 
     inputTelephone.addEventListener('blur', function () {
         var t = document.querySelector("#firstHr span");
         t.style.background = "";
-        t.textContent = inputTelephone.value;
-        document.querySelector("#contact2 h2").textContent = t.textContent;
+
 
         if (inputTelephone.value == "")
         {
@@ -65,6 +67,8 @@ window.addEventListener('load', function(){
             inputTelephone.placeholder = "Podaj swój numer tel...";
         } else
         {
+            t.textContent = inputTelephone.value;
+            document.querySelector("#contact2 h2").textContent = t.textContent;
             inputTelephone.style.background = "";
         }
     }, false);
@@ -76,20 +80,21 @@ window.addEventListener('load', function(){
         var t = document.querySelector("#email h2");
         inputEmail.style.background = "";
         t.style.background = "yellow";
+        t.scrollIntoView();
     }, false);
 
     inputEmail.addEventListener('blur', function () {
         var t = document.querySelector("#email h2");
         t.style.background = "";
-        t.textContent = inputEmail.value;
+        
 
         if (inputEmail.value == "")
         {
-            t.textContent = "---";
             inputEmail.style.background = "red";
             inputEmail.placeholder = "Podaj swój email...";
         } else
         {
+            t.textContent = inputEmail.value;
             inputEmail.style.background = "";
         }
     }, false);
@@ -100,47 +105,42 @@ window.addEventListener('load', function(){
     {
         var specyficationEdit = document.querySelectorAll(".specyficationEdit");
 
-        function focus(e)
+        function focus()
         {
-            var specyficationEditX = e.target;
-
-            var i = getIndex(specyficationEditX, specyficationEdit);
+            var specyficationEdit = document.querySelectorAll(".specyficationEdit");
+            var i = getIndex(this, specyficationEdit);
 
             var t = document.querySelectorAll("#specyficationUl > li");
-            specyficationEditX.style.background = "";
+            this.style.background = "";
             t[i].style.background = "yellow";
+            t[0].scrollIntoView();
         }
 
-        function blur(e)
+        function blur()
         {
-            var specyficationEditX = e.target;
+            var specyficationEdit = document.querySelectorAll(".specyficationEdit");
+            var i = getIndex(this, specyficationEdit);
 
-            var i = getIndex(specyficationEditX, specyficationEdit);
+            var t = document.querySelectorAll("#specyficationUl > li");
 
-            var t = document.querySelectorAll("#specyficationUl > li");            
-
-            if (specyficationEditX.value == "")
+            if (this.value == "")
             {
-                t[i].textContent = "---";
-                specyficationEditX.style.background = "red";
-                specyficationEditX.placeholder = "Podaj specyfikację";
+                //t[i].textContent = "---";
+                this.style.background = "red";
+                this.placeholder = "Podaj specyfikację";
             } else
             {
-                t[i].textContent = specyficationEditX.value;
-                specyficationEditX.style.background = "";
+                t[i].textContent = this.value;
+                this.style.background = "";
             }
-            
+
             t[i].style.background = "";
         }
 
         for (var i = 0; i < specyficationEdit.length; i++)
         {
-            specyficationEdit[i].addEventListener('focus', function (e) {
-                focus(e);
-            });
-            specyficationEdit[i].addEventListener('blur', function (e) {
-                blur(e);
-            });
+            specyficationEdit[i].addEventListener('focus', focus);
+            specyficationEdit[i].addEventListener('blur', blur);
         }
     }
 
@@ -160,6 +160,7 @@ window.addEventListener('load', function(){
             var i = getIndex(parentBTN, parentLi.querySelectorAll("li"));
             parentLi.removeChild(parentBTN);
             parentT.removeChild(t[i]);
+
             addEventForInputs();
         }
     }
@@ -183,7 +184,7 @@ window.addEventListener('load', function(){
         var su = document.getElementById("specyficationUl");
         sc.appendChild(sc.lastElementChild.cloneNode(true));
         su.appendChild(su.lastElementChild.cloneNode(true));
-        
+
         removeSpecyficationEvent();
         addEventForInputs();
     }
@@ -191,18 +192,110 @@ window.addEventListener('load', function(){
     var newSpecyficationBTN = document.querySelector('.addNewSpecyficationBTN');
     newSpecyficationBTN.addEventListener('click', addSpecyficationEl);
 
+//Edycja opisu przedmiotu - czesc 1
+
+    var descriptionEdit = document.querySelector('#descriptionEdit');
+
+    descriptionEdit.addEventListener('focus', function () {
+        var t = document.querySelector("#details_desc");
+        this.style.background = "";
+        t.style.background = "yellow";
+        t.scrollIntoView();
+        this.style.width = "800px";
+        this.style.height = "150px";
+    }, false);
+
+    descriptionEdit.addEventListener('blur', function () {
+        var t = document.querySelector("#details_desc");
+        t.style.background = "";
+        this.style.width = "";
+        this.style.height = "";
+
+        if (this.value == "")
+        {
+            this.style.background = "red";
+            this.placeholder = "Wprowadź opis...";
+        } else
+        {
+            t.querySelector("p").textContent = this.value;
+            this.style.background = "";
+        }
+    }, false);
+    
+    
+    //Edycja opisu przedmiotu - czesc 2
+
+    var descriptionEdit = document.querySelector('#descriptionPlusEdit');
+
+    descriptionPlusEdit.addEventListener('focus', function () {
+        var t = document.querySelector("#details_desc_plus");
+        this.style.background = "";
+        t.style.background = "yellow";
+        t.scrollIntoView();
+        this.style.width = "800px";
+        this.style.height = "150px";
+    }, false);
+
+    descriptionPlusEdit.addEventListener('blur', function () {
+        var t = document.querySelector("#details_desc_plus");
+        t.style.background = "";
+        this.style.width = "";
+        this.style.height = "";
+
+        if (this.value == "")
+        {
+            this.style.background = "red";
+            this.placeholder = "Dodatkowy opis...";
+        } else
+        {
+            t.querySelector("p").textContent = this.value;
+            this.style.background = "";
+        }
+    }, false);
+    
+    
+//Edycja stopki
+
+    var footerEdit = document.querySelector('#footerEdit');
+
+    footerEdit.addEventListener('focus', function () {
+        var t = document.querySelector("#contact");
+        this.style.background = "";
+        t.style.background = "yellow";
+        t.scrollIntoView();
+        this.style.width = "800px";
+        this.style.height = "150px";
+    }, false);
+
+    footerEdit.addEventListener('blur', function () {
+        var t = document.querySelector("#contact");
+        t.style.background = "";
+        this.style.width = "";
+        this.style.height = "";
+
+        if (this.value == "")
+        {
+            this.style.background = "red";
+            this.placeholder = "Stopka strony...";
+        } else
+        {
+            t.querySelector("p").textContent = this.value;
+            this.style.background = "";
+        }
+    }, false);
+
 //Okno z wygenerowanym kodem
 
 //Generowanie kodu
     var generateBTN = document.querySelector('#generateBTN');
     generateBTN.addEventListener('click', function () {
-        document.querySelector('textarea').value = document.querySelector('#contentBox').innerHTML;
+        document.querySelector('#textarea').value = document.querySelector('#contentBox').innerHTML;
         document.querySelector('#template').style.display = 'block';
     });
 
 //Zaznaczenie calego wygenerowanego kodu po kliknieciu
 
-    var textArea = document.querySelector('textarea');
+    var textArea = document.querySelector('#textarea');
     textArea.addEventListener('click', function () {
         textArea.focus();
         textArea.select();
@@ -228,7 +321,7 @@ window.addEventListener('load', function(){
             if (LI[i] === element)
                 return i;
         }
-        return - 1;
+        return -1;
     }
     ;
 }

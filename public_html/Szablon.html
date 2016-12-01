@@ -13,11 +13,12 @@
             </div>
 
             <div>
-                <label for="titleEdit">Tytuł:</label><input type="text" id="titleEdit">
-                <label for="telephoneEdit">Telefon:</label><input type="tel" id="telephoneEdit">
-                <label for="emailEdit">Email:</label><input type="email" id="emailEdit">
-                <label>Specyfikacja:</label>
 
+                <label for="titleEdit">Tytuł:<br></label><input type="text" id="titleEdit">
+                <label for="telephoneEdit">Telefon:<br></label><input type="tel" id="telephoneEdit">
+                <label for="emailEdit">Email:<br></label><input type="email" id="emailEdit">
+
+                <label>Specyfikacja:</label>
                 <ul id="specyficationConteiner" style="list-style-type: none; margin: 0; padding: 0;">
                     <li class="divSpecyficationInput">
                         <input type="text" class="specyficationEdit" name="specyfication">
@@ -34,7 +35,10 @@
                 </ul>
                 <input type="submit" class="addNewSpecyficationBTN" value="+">
 
+                <label>Opis przedmiotu</label> <textarea rows="1" id="descriptionEdit" name="descriptionEdit"></textarea>
+                <label>Dodatkowy opis</label> <textarea rows="1" id="descriptionPlusEdit" name="descriptionEdit"></textarea>
 
+                <label>Stopka strony</label> <textarea rows="1" id="footerEdit" name="footerEdit"></textarea>
             </div>
 
             <input type="submit" id="generateBTN" value="Generuj kod">
@@ -42,7 +46,7 @@
 
         <div id="template" style="display: none;">
             <h3>Skopiuj zawartość i wklej do edytora Allegro</h3>
-            <textarea></textarea>
+            <textarea id="textarea"></textarea>
             <img src="img/close.png" height="30" width="30" alt="ZAMKNIJ">
         </div>
 
@@ -182,12 +186,25 @@
                 {
                     float: right;
                     padding: 30px;
+
+                }
+                .photoSpecyfication1 img
+                {
+                    max-height: 400px;
+                    max-width: 400px;
                 }
 
                 .photoSpecyfication2
                 {
                     float: left;
                     padding: 30px;
+
+                }
+
+                .photoSpecyfication2 img
+                {
+                    max-height: 400px;
+                    max-width: 400px;
                 }
 
                 #details_desc
@@ -321,7 +338,7 @@
                         </div>
 
                         <div class="photoSpecyfication1">
-                            <img src="http://pngimg.com/upload/smartphone_PNG8519.png" height="400" width="400">
+                            <img src="http://pngimg.com/upload/smartphone_PNG8519.png">
                         </div>
 
                     </div>
@@ -330,19 +347,17 @@
 
                     <div class="desc">
                         <div class="photoSpecyfication2">
-                            <img src="http://conocea.com/blog/wp-content/uploads/2015/05/smartphone-android-titan-b-7100-wifi-doble-chip-3g-53_MLM-F-3995481449_032013.jpg" height="400" width="400">
+                            <img src="http://conocea.com/blog/wp-content/uploads/2015/05/smartphone-android-titan-b-7100-wifi-doble-chip-3g-53_MLM-F-3995481449_032013.jpg">
                         </div>
 
                         <div id="details_desc">
-                            <p>
-                                Pellentesque nec sem nisi. Vivamus vestibulum, arcu imperdiet auctor elementum, augue ante lacinia nibh, quis pulvinar nisi arcu a ante. Donec ornare viverra ornare. Cras vestibulum velit eu lacinia bibendum. Nunc commodo luctus tellus at efficitur. Curabitur vitae tortor facilisis, vehicula risus ac, lobortis lacus. Sed pellentesque tincidunt felis, porttitor ullamcorper nisl semper at. Nulla molestie quis risus a bibendum. Pellentesque nec sem nisi. Vivamus vestibulum, arcu imperdiet auctor elementum, augue ante lacinia nibh, quis pulvinar nisi arcu a ante. Donec ornare viverra ornare. 
-                            </p>
+                            <p>Pellentesque nec sem nisi. Vivamus vestibulum, arcu imperdiet auctor elementum, augue ante lacinia nibh, quis pulvinar nisi arcu a ante. Donec ornare viverra ornare. Cras vestibulum velit eu lacinia bibendum. Nunc commodo luctus tellus at efficitur. Curabitur vitae tortor facilisis, vehicula risus ac, lobortis lacus. Sed pellentesque tincidunt felis, porttitor ullamcorper nisl semper at. Nulla molestie quis risus a bibendum. Pellentesque nec sem nisi. Vivamus vestibulum, arcu imperdiet auctor elementum, augue ante lacinia nibh, quis pulvinar nisi arcu a ante. Donec ornare viverra ornare.</p>
                         </div>
                     </div>
 
                 </div>
 
-                <div style="clear: both;">
+                <div id="details_desc_plus" style="clear: both;">
                     <p style="padding-top:100px;">
                         Cras vestibulum velit eu lacinia bibendum. Nunc commodo luctus tellus at efficitur. Curabitur vitae tortor facilisis, vehicula risus ac, lobortis lacus. Sed pellentesque tincidunt felis, porttitor ullamcorper nisl semper at. Nulla molestie quis risus a bibendum. Pellentesque nec sem nisi. Vivamus vestibulum, arcu imperdiet auctor elementum, augue ante lacinia nibh, quis pulvinar nisi arcu a ante. Donec ornare viverra ornare. 
                     </p>
